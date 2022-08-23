@@ -10,5 +10,5 @@ public interface ApiService {
 
     // End point
     @GET("KhoaPhamTraining/json/tien/demo1.json")
-    Call
+    Call<Demo1> callDemo1();
 }

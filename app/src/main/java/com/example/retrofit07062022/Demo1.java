@@ -55,4 +55,15 @@ public class Demo1 {
     public void setLogo(String logo) {
         this.logo = logo;
     }
+
+    @Override
+    public String toString() {
+        return "Demo1{" +
+                "monHoc='" + monHoc + '\'' +
+                ", noiHoc='" + noiHoc + '\'' +
+                ", website='" + website + '\'' +
+                ", fanPage='" + fanPage + '\'' +
+                ", logo='" + logo + '\'' +
+                '}';
+    }
 }

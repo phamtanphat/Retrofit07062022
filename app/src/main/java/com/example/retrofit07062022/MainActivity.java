@@ -3,6 +3,7 @@ package com.example.retrofit07062022;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -13,6 +14,9 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -42,6 +46,20 @@ public class MainActivity extends AppCompatActivity {
                         .addConverterFactory(GsonConverterFactory.create(gson))
                         .build();
 
+        ApiService apiService = retrofit.create(ApiService.class);
 
+        Call<Demo1> callDemo1 = apiService.callDemo1();
+        callDemo1.enqueue(new Callback<Demo1>() {
+            @Override
+            public void onResponse(Call<Demo1> call, Response<Demo1> response) {
+                Demo1 demo1 = response.body();
+                Log.d("BBB", demo1.toString());
+            }
+
+            @Override
+            public void onFailure(Call<Demo1> call, Throwable t) {
+
+            }
+        });
     }
 }
